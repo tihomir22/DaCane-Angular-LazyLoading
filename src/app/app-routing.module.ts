@@ -10,6 +10,7 @@ import { NotfoundComponent } from './notfound/notfound.component';
 const appRoutes: Routes = [
   //{ path: 'segunda3', component: ContenidoComponent },
   { path: 'segunda', loadChildren: './segunda/segunda.module#SegundaModule' },
+  { path: 'login', loadChildren: './tercera/tercera.module#TerceraModule' },
   { path: '', component: ContenidoprimeraComponent },
   
 

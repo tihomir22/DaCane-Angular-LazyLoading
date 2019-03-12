@@ -9,6 +9,8 @@ import {ContenidoComponent} from './segunda/contenido/contenido.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { PrimeraModule } from './primera/primera.module';
 import { SegundaModule } from './segunda/segunda.module';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -23,9 +25,10 @@ import { SegundaModule } from './segunda/segunda.module';
     BrowserModule,
     RouterModule,
     AppRoutingModule,
+    FormsModule,
     PrimeraModule,
     //SegundaModule, se elimina ya que es lazy load 
-    
+      
   ],
   providers: [],
   bootstrap: [AppComponent]
