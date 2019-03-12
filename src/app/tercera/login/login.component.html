@@ -2,12 +2,12 @@
   <h2>Login Form</h2>
   <div class="row">
       <div class="col-md-12 form-group">
-          <input type="text" class="form-control" placeholder="Username" [(ngModel)]="usuario" onchange="imprimirVarsDeLaVista()">
+          <input type="text" class="form-control" placeholder="Username" [(ngModel)]="usuario" onchange="imprimirVarsDeLaVista">
       </div>
   </div>
   <div class="row">
       <div class="col-md-12 form-group">
-          <input type="password" placeholder="Enter your Password" class="form-control" [(ngModel)]="contrasenya" onchange="imprimirVarsDeLaVista()">
+          <input type="password" placeholder="Enter your Password" class="form-control" [(ngModel)]="contrasenya" onchange="imprimirVarsDeLaVista">
       </div>
   </div>
   <div class="row">
@@ -15,6 +15,13 @@
           <a class="btn btn-block btn-login" [routerLink]="['dashboard/', usuario,contrasenya]">Suelta el torpedo</a>
         </div>
   </div>
+
+  <div class="row">
+    <div class="col-md-12 form-group">
+        <a class="btn btn-block btn-green" [routerLink]="['dashboard/']" [queryParams]="{ user: usuario,pass:contrasenya}">Anaconda</a>
+      </div>
+</div>
+
   <div class="row">
       <div class="col-md-12">
           <a href="http://bit.ly/2HKy0Mv">Download Best Wordpress Theme</a>

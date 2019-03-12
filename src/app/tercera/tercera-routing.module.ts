@@ -8,9 +8,13 @@ const routes: Routes = [
     path: '',
     component: LoginComponent
   },
-  { 
+  {
     path: 'dashboard/:user/:pass', component: DashboardComponent
+  },
+  {
+    path: 'dashboard', component: DashboardComponent
   }
+
 ];
 
 @NgModule({
