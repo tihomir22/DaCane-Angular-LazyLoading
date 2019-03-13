@@ -2,67 +2,29 @@
 
   <!-- Jumbotron Header -->
   <header class="jumbotron my-4">
-    <h1 class="display-3">Bienvenido {{username}}!</h1>
-    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+    <h1 class="display-3">Bienvenido usuario {{usuario.user}}!</h1>
+    <p class="lead">password {{usuario.pass}}</p>
     <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
   </header>
 
-  <!-- Page Features -->
-  <div class="row text-center">
-
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="card h-100">
-        <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
+  <div class="card-columns" #anyadirCardBox>
+    <div class="card i" *ngFor="let card of [1,2,3];index as i">
+      <div class="card-body">
+        <h4 class="card-title">Card {{i}}</h4>
+        <p *ngIf="i % 2 == 0" class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
+          vitae nam autem minus, doloremque possimus esse non aspernatur optio quo porro iure eum aliquid perspiciatis
+          reprehenderit placeat cupiditate at. Consectetur!</p>
+        <p *ngIf="i % 2 != 0" class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
+          vitae nam autem minus, doloremque possimus esse non aspernatur optio quo porro iure eum aliquid perspiciatis
+          reprehenderit placeat cupiditate at. Consectetur!Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Temporibus vitae nam autem minus, doloremque possimus esse non aspernatur optio quo porro iure eum aliquid
+          perspiciatis reprehenderit placeat cupiditate at. Consectetur!</p>
       </div>
+      <button type="button" class="btn btn-primary btn-lg btn-block">Subir</button>
+     
     </div>
-
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="card h-100">
-        <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="card h-100">
-        <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-lg-3 col-md-6 mb-4">
-      <div class="card h-100">
-        <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-        </div>
-        <div class="card-footer">
-          <a href="#" class="btn btn-primary">Find Out More!</a>
-        </div>
-      </div>
-    </div>
-
   </div>
-  <!-- /.row -->
+
+  <app-anyadircard (notify)="anyadirNuevaCardEjemplar($event)"></app-anyadircard>
 
 </div>

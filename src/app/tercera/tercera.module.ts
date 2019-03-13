@@ -5,9 +5,10 @@ import { TerceraRoutingModule } from './tercera-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AnyadircardComponent } from './anyadircard/anyadircard.component';
 
 @NgModule({
-  declarations: [LoginComponent, DashboardComponent],
+  declarations: [LoginComponent, DashboardComponent, AnyadircardComponent],
   imports: [
     CommonModule,
     FormsModule,
