@@ -4,6 +4,7 @@ import { pipe, of, from, combineLatest, Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Cuenta } from '../login/class/Cuenta';
 import { plainToClass } from 'class-transformer';
+import { ContenidoCard } from '../anyadircard/class/ContenidoCard';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,10 +13,12 @@ import { plainToClass } from 'class-transformer';
 })
 export class DashboardComponent implements OnInit {
   private usuario: Cuenta;
+  public listaCardsCreadas:Array<ContenidoCard>;
+ 
   @ViewChild("anyadirCardBox", { read: ElementRef }) addcardbox: ElementRef;
 
   constructor(private route: ActivatedRoute, private renderer: Renderer2) {
-
+    this.listaCardsCreadas=new Array<ContenidoCard>();
   }
 
   ngOnInit() {
@@ -26,21 +29,39 @@ export class DashboardComponent implements OnInit {
   public leerCredenciasPorParams(): void {
     this.getPeticiones();
   }
-  public anyadirNuevaCardEjemplar():void{
-    console.log("me ejecuto")
+  public anyadirNuevaCardEjemplar(card:ContenidoCard): void {
+    console.log("me ejecuto",event)
     const div = this.renderer.createElement('div');
-    /*
     this.renderer.addClass(div, 'card');
-    const cardbody=this.renderer.createElement('div');
-    this.renderer.addClass(div, 'card-body');
+
+    const cardbody = this.renderer.createElement('div');
+    this.renderer.addClass(cardbody, 'card-body');
     this.renderer.appendChild(div, cardbody);
-    */
-    const text = this.renderer.createText('full de mango');
-    //this.renderer.appendChild(cardbody,text);
-    this.renderer.appendChild(div,text);
-    
-    
+
+    const cardtitle = this.renderer.createElement('h4');
+    this.renderer.addClass(cardtitle, 'card-title');
+    const textTitle = this.renderer.createText(card.getNombre());
+    this.renderer.appendChild(cardtitle, textTitle);
+    this.renderer.appendChild(cardbody, cardtitle);
+
+    const cardText = this.renderer.createElement('p');
+    this.renderer.addClass(cardText, 'card-text');
+    const parrafoCard = this.renderer.createText(card.getDesc());
+    this.renderer.appendChild(cardText, parrafoCard);
+    this.renderer.appendChild(cardbody, cardText);
+
+    const btnCard = this.renderer.createElement('button');
+    this.renderer.addClass(btnCard, 'btn');
+    this.renderer.addClass(btnCard, 'btn-primary');
+    this.renderer.addClass(btnCard, 'btn-lg');
+    this.renderer.addClass(btnCard, 'btn-block');
+
+    const btntext = this.renderer.createText('New Btn');
+    this.renderer.appendChild(btnCard, btntext);
+    this.renderer.appendChild(div, btnCard);
+
     this.renderer.appendChild(this.addcardbox.nativeElement, div);
+    this.listaCardsCreadas.push(card)
   }
 
 

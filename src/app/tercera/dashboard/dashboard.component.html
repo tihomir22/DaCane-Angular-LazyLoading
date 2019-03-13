@@ -24,6 +24,9 @@
      
     </div>
   </div>
+  <div *ngIf="listaCardsCreadas == undefined || listaCardsCreadas.length == 0" class="alert alert-danger" role="alert">
+    <strong>Vacio !</strong> Tienes el array dinamico vacio.
+  </div>
 
   <app-anyadircard (notify)="anyadirNuevaCardEjemplar($event)"></app-anyadircard>
 
