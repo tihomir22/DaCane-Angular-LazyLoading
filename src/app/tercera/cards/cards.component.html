@@ -1,0 +1,24 @@
+<div class="card-columns" #anyadirCardBox>
+  <div class="card i" *ngFor="let card of [1,2,3];index as i">
+    <div class="card-body">
+      <h4 class="card-title">Card {{i}}</h4>
+      <p *ngIf="i % 2 == 0" class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
+        vitae nam autem minus, doloremque possimus esse non aspernatur optio quo porro iure eum aliquid perspiciatis
+        reprehenderit placeat cupiditate at. Consectetur!</p>
+      <p *ngIf="i % 2 != 0" class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
+        vitae nam autem minus, doloremque possimus esse non aspernatur optio quo porro iure eum aliquid perspiciatis
+        reprehenderit placeat cupiditate at. Consectetur!Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Temporibus vitae nam autem minus, doloremque possimus esse non aspernatur optio quo porro iure eum aliquid
+        perspiciatis reprehenderit placeat cupiditate at. Consectetur!</p>
+    </div>
+    <button type="button" class="btn btn-primary btn-lg btn-block">Subir</button>
+
+  </div>
+
+</div>
+
+<div *ngIf="listaCardsCreadas == undefined || listaCardsCreadas.length == 0" class="alert alert-danger" role="alert">
+  <strong>Vacio !</strong> Tienes el array dinamico vacio.
+</div>
+
+<app-anyadircard [idCard]="idCard" (notify)="anyadirNuevaCardEjemplar($event)"></app-anyadircard>

@@ -13,55 +13,22 @@ import { ContenidoCard } from '../anyadircard/class/ContenidoCard';
 })
 export class DashboardComponent implements OnInit {
   private usuario: Cuenta;
-  public listaCardsCreadas:Array<ContenidoCard>;
+  public idCard:string;
+  
  
   @ViewChild("anyadirCardBox", { read: ElementRef }) addcardbox: ElementRef;
 
-  constructor(private route: ActivatedRoute, private renderer: Renderer2) {
-    this.listaCardsCreadas=new Array<ContenidoCard>();
+
+  constructor(private route: ActivatedRoute) {
+   
   }
 
   ngOnInit() {
-    this.leerCredenciasPorParams();
-    console.log(this.addcardbox)
-  }
-
-  public leerCredenciasPorParams(): void {
     this.getPeticiones();
   }
-  public anyadirNuevaCardEjemplar(card:ContenidoCard): void {
-    console.log("me ejecuto",event)
-    const div = this.renderer.createElement('div');
-    this.renderer.addClass(div, 'card');
-
-    const cardbody = this.renderer.createElement('div');
-    this.renderer.addClass(cardbody, 'card-body');
-    this.renderer.appendChild(div, cardbody);
-
-    const cardtitle = this.renderer.createElement('h4');
-    this.renderer.addClass(cardtitle, 'card-title');
-    const textTitle = this.renderer.createText(card.getNombre());
-    this.renderer.appendChild(cardtitle, textTitle);
-    this.renderer.appendChild(cardbody, cardtitle);
-
-    const cardText = this.renderer.createElement('p');
-    this.renderer.addClass(cardText, 'card-text');
-    const parrafoCard = this.renderer.createText(card.getDesc());
-    this.renderer.appendChild(cardText, parrafoCard);
-    this.renderer.appendChild(cardbody, cardText);
-
-    const btnCard = this.renderer.createElement('button');
-    this.renderer.addClass(btnCard, 'btn');
-    this.renderer.addClass(btnCard, 'btn-primary');
-    this.renderer.addClass(btnCard, 'btn-lg');
-    this.renderer.addClass(btnCard, 'btn-block');
-
-    const btntext = this.renderer.createText('New Btn');
-    this.renderer.appendChild(btnCard, btntext);
-    this.renderer.appendChild(div, btnCard);
-
-    this.renderer.appendChild(this.addcardbox.nativeElement, div);
-    this.listaCardsCreadas.push(card)
+  public recogerNuevoId($event):void{
+    console.log($event)
+    this.idCard=$event;
   }
 
 
@@ -77,7 +44,8 @@ export class DashboardComponent implements OnInit {
         if (ap.qparams['user'] != undefined) {
           this.usuario = plainToClass(Cuenta, ap.qparams);
         }
-        console.log(this.usuario)
+        //console.log(this.usuario.getUser())
+        this.idCard=window.btoa(this.usuario.getUser()+"");
 
       })
 

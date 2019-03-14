@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { ContenidoCard } from './class/ContenidoCard';
 
 @Component({
@@ -8,10 +8,19 @@ import { ContenidoCard } from './class/ContenidoCard';
 })
 export class AnyadircardComponent implements OnInit {
 
+  
+  public _idCard:string;
+  //para recibir del padre -cards- un id
+  @Input('idCard')
+  set idCard(id: string) {
+      this._idCard = id;
+      console.log(this._idCard)
+  }
+  //para enviar al padre --cards-- 
   @Output() notify: EventEmitter<ContenidoCard> = new EventEmitter<ContenidoCard>();
 
   private nombreCardDinamica:string;
-  private descCardDinamica;string;
+  private descCardDinamica:string;
 
   constructor() { }
 
@@ -19,7 +28,7 @@ export class AnyadircardComponent implements OnInit {
     
   }
   notificarAlPadre(){
-    this.notify.emit(new ContenidoCard(this.nombreCardDinamica,this.descCardDinamica));
+    this.notify.emit(new ContenidoCard(this._idCard,this.nombreCardDinamica,this.descCardDinamica));
   }
 
 }
